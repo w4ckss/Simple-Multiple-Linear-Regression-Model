@@ -1,5 +1,6 @@
 import pandas as pd
-import numpy 
+import numpy as np
+import matplotlib.pyplot as plt
 
 print(pd.__version__)
 
@@ -44,4 +45,36 @@ print("The average exam score is: ", mean_examscore)
 #find correlation between examscore and study hours
 studyhoursXexamscore_corr = df['study_hours'].corr(df['exam_score'])
 print("The correlation between study hours and exam score is: ", studyhoursXexamscore_corr)
+
+#Linear Regression
+X = df['study_hours']
+Y = df['exam_score']
+
+m, b = np.polyfit(X, Y, 1)
+
+regression_line = m*X + b
+
+plt.scatter(X, Y)
+plt.plot(X, regression_line)
+plt.xlabel('Study Hours')
+plt.ylabel('Exam Scores')
+plt.title('Study Hours and Exam Scores correlation')
+plt.plot(X, regression_line, label='Line of Best Fit')
+#plt.show()
+
+predict_hours = int(input("How many hours will you be studying? "))
+
+predict_score = round(m*predict_hours + b, 2)
+
+print("If you study for ", predict_hours, " hours, then, on average, you can get an estimated score of ", predict_score, 'percent')
+
+if predict_hours > mean_studyhours:
+    print("You study more than the average study hours")
+else:
+    print("You study less than the average hours")
+
+if predict_score > mean_examscore:
+    print("Your score is higher than the average")
+else:
+    print("Your score is lower than the average")
 
