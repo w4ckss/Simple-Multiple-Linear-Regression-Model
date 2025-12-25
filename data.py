@@ -14,6 +14,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 import pickle
+import streamlit as st
 
 # This class is used to determine whether the given input is above, below, or equal to the average
 def CompareToMean(name, given, mean):
@@ -56,6 +57,8 @@ ModelType.fit(X, Y) #creates the regression equation
 #calculations for predictions
 ModelType.coef_ #calculates the coefficient of each predictors
 ModelType.intercept_ #calsulates the intercept of the equation (where all balues are zero)
+
+st.title("Exam Score Prediction Model")
 
 #Save the Trained Model
 with open("PredictionModel.pk1", "wb") as f:
