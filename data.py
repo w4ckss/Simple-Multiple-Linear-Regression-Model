@@ -1,5 +1,5 @@
 """
-EXAM SCORE PREDICTION MODEL
+FINAL EXAM SCORE PREDICTION MODEL
 
 This program is a simple model that predicts the exam score from four different factors.
 The four factors are Study Hours, Sleep Hours, Class Attendance, and Age.
@@ -13,16 +13,15 @@ import pandas as pd
 import numpy as np
 from sklearn.linear_model import LinearRegression
 import pickle
-import streamlit as st
 
 # This class is used to determine whether the given input is above, below, or equal to the average
 def CompareToMean(name, given, mean):
     if given > mean:
-        print("Your", name, "is above the average -- ", mean)
+        print("Your", name, "\nis above the average -- ", mean)
     elif given == mean:
-        print("Your", name, "is the same as the average -- ", mean)
+        print("Your", name, "\nis the same as the average -- ", mean)
     else:
-        print("Your", name, "is below the average -- ", mean)
+        print("Your", name, "\nis below the average -- ", mean)
 
 #Reads the csv file where all data used is located
 df = pd.read_csv("Exam_Score_Prediction.csv")
@@ -34,20 +33,20 @@ print(df.head())
 #Disclaimer Message for the user
 print("Disclaimer! This program will not guarantee result and is used strictly for educational purposes only." \
 "Any predictions given may be taken as a bench mark but not a guaranteed score." \
-"Please do not solely rely on this program to predict your score since this program will not give guaranteed results.")
+"Please do not solely rely on this program to predict your score since this program will not give guaranteed results.\n")
 
 #mean of the outcome
 mean_examscore = df['exam_score'].mean()
 
 #mean of the predictors
-mean_studyhours = round(df['study_hours'].mean(), 2)
-mean_sleephours = round(df['sleep_hours'].mean(), 2)
-mean_age = round(df['age'].mean(), 2)
-mean_attendance = round(df['class_attendance'].mean(), 2)
+mean_studyhours = round(df['study_hours'].mean(), 2) #study_hours
+mean_sleephours = round(df['sleep_hours'].mean(), 2) #sleep_hours
+mean_age = round(df['age'].mean(), 2) #age
+mean_attendance = round(df['class_attendance'].mean(), 2) #class_attended
 
 #Assigning the predictors and the outcome
-X = df[['sleep_hours', 'study_hours', 'class_attendance', 'age']] #Predictors
-Y = df['exam_score'] #Outcome
+X = df[['sleep_hours', 'study_hours', 'class_attendance', 'age']] #Predictors Variable
+Y = df['exam_score'] #Outcome Variable
 
 #Uses scikit learn to create multiple regression line
 ModelType = LinearRegression() #Type of regression line used
@@ -55,9 +54,7 @@ ModelType.fit(X, Y) #creates the regression equation
 
 #calculations for predictions
 ModelType.coef_ #calculates the coefficient of each predictors
-ModelType.intercept_ #calsulates the intercept of the equation (where all balues are zero)
-
-st.title("Exam Score Prediction Model")
+ModelType.intercept_ #calculates the intercept of the equation (where all balues are zero)
 
 #Save the Trained Model
 with open("PredictionModel.pk1", "wb") as f:
@@ -69,9 +66,9 @@ with open("PredictionModel.pk1", "rb") as f:
 
 #asks user input for each new data
 sleep = int(input('How many hours did you sleep? ')) 
-study = int(input('How many hours did you study? '))
-attend = int(input('How many classes did you attend (whole semester as a percentage [value only])? '))
-age = int(input('How old are you? '))
+study = int(input('\nHow many hours did you study? '))
+attend = int(input('\nHow many classes did you attend (whole semester as a percentage [value only])? '))
+age = int(input('\nHow old are you? '))
 
 #creates a data frame of the given data
 data_given = pd.DataFrame([[sleep, study, attend, age]], columns=["sleep_hours","study_hours", "class_attendance", "age"])
