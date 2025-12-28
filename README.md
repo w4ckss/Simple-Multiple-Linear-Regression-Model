@@ -1,16 +1,16 @@
-#Introduction
+# Introduction :bulb:
 
 This is a simple model that uses synthetic data to learn how quantitative variables such as
 study hours, sleep hours, class attendance, and age impact the final exam score of a student
 a day prior to their final exam. 
 
-#Brief Structure Description
+# Brief Structure Description :file_folder:
 
 The model utilizes Scikit-learn library -- LinearRegression -- to create a machine learning model.
 Given that we have four quantitative variables that may affect academic result, I used a multiple
 linear regression model to account for al the variables and it's effects on the result. 
 
-#Model Limitations
+# Model Limitations :collision:
 
 Considering that the model uses synthetic data, it's source may not represent the population. However, with
 thorough observation of the raw dataset, I believe that it is close enough to mimic the population data.
