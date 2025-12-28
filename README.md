@@ -22,3 +22,5 @@ manner and is similar to the training data set. Lastly, the model does not take 
 variable of the dataset. I believe that academic strands, individual strengths, and other social factors 
 can impact the results of a final exam, however, due to its social factor, it is difficult to represent in a mathematical perspective. As a result, the model will not reflect the impact of the quantitative data. 
 
+## Dataset Link
+https://www.kaggle.com/datasets/kundanbedmutha/exam-score-prediction-dataset 
